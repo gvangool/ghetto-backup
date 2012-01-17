@@ -7,6 +7,8 @@ Common options
 You can specify the backup directory by setting the ``$BACKUP_DIR``
 environment variable.
 
+.. note:: Make sure that ``BACKUP_DIR`` ends with ``/``!
+
 Example::
 
   BACKUP_DIR=/var/backups/projects/ ./mysql.sh
@@ -65,3 +67,25 @@ remote repository.
 Usage::
 
   BACKUP_DIR="~/backups/" sudo ./backup_to_git.sh ~/project/my_website/uploads ~/project/web2/media/
+
+Usage
+-----
+This is a full configuration example on how you would use the backup-to-git
+approach.
+
+In the crontab of the ``root`` user (``sudo crontab -e``)::
+
+  12 * * * * (cd /home/my_user/ghetto-backup/; BACKUP_DIR="/home/my_user/backups/" ./backup_to_git.sh /home/my_user/project/my_website/uploads /home/my_user/project/web2/media/ /home/user2/project/www/media/)
+
+Let elaborate on this.
+
+1. Every hour at 12 past the hour, we will run the backup.
+2. Go to the location of this backup system ``cd /home/my_user/ghetto-backup/;``
+3. The actual backup:
+
+   - Create a backup to ``/home/my_user/backups/``
+     (``BACKUP_DIR="/home/my_user/backups/"``).
+   - Use the backup-to-git system (``./backup_to_git.sh``)
+   - Backup the specified directories
+     (``/home/my_user/project/my_website/uploads
+     /home/my_user/project/web2/media/ /home/user2/project/www/media/``)
