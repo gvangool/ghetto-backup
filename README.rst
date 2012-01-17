@@ -55,3 +55,13 @@ This will copy the files into the backup directory.
 Usage::
 
   ./copy_files.sh ~/project/my_website/uploads
+
+Backup to git
+-------------
+This ties it all together. It will create a backup of the MySQl databases copy
+all the paths to the ``$BACKUP_DIR``, commit it to git and push those to the
+remote repository.
+
+Usage::
+
+  BACKUP_DIR="~/backups/" sudo ./backup_to_git.sh ~/project/my_website/uploads ~/project/web2/media/
