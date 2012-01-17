@@ -34,3 +34,15 @@ Options
   abilities.
 
   Default: ``-9 --rsyncable``
+
+Files
+-----
+This will copy the files into the backup directory.
+
+.. note:: old files are not deleted.
+
+.. note:: **IDEA** use ``rsync`` instead of ``cp -ur``
+
+Usage::
+
+  ./copy_files.sh ~/project/my_website/uploads
