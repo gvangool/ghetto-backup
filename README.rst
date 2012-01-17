@@ -2,6 +2,15 @@ Backup system
 =============
 This is a ghetto backup system.
 
+Common options
+--------------
+You can specify the backup directory by setting the ``$BACKUP_DIR``
+environment variable.
+
+Example::
+
+  BACKUP_DIR=/var/backups/projects/ ./mysql.sh
+
 MySQL
 -----
 This will create a gzip-ed dump of each MySQL database.
