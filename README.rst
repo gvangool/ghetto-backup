@@ -46,6 +46,39 @@ Options
 
   Default: ``-9 --rsyncable``
 
+Postgres
+--------
+This will create a gzip-ed dump of each PostgreSQL database.
+
+Basic usage::
+
+  PGSQL_OPTS="-U postgres" ./postgres.sh
+
+Advanced usage::
+
+  GZIP="--fast" PGSQL_OPTS="-U postgres" PGDUMP_OPTS="-Fp" ./postgres.sh
+
+Some sensible defaults are provided (you will need to run this as ``root``
+though). However you can overwrite the options if needed.
+
+Options
+~~~~~~~
+``PGSQL_OPTS``
+  The PostgreSQL options, these are used to connect to your PostgreSQL
+  instance.
+
+  Default: ``-U postgres``
+``PGDUMP_OPTS``
+  Specific options for ``pg_dump``.
+
+  Default: ``-Ft``
+``GZIP``
+  ``gzip`` uses the GZIP environment variable by default to specify default
+  options. We hijack this behaviour, so you can easily specify extra
+  abilities.
+
+  Default: ``-9 --rsyncable``
+
 Files
 -----
 This will copy the files into the backup directory.
