@@ -14,9 +14,9 @@ GZIP=${GZIP:="-9 --rsyncable"}
 
 # Get all databases 
 if [[ -z ${IGNORE_DB} ]] ; then
-    DATABASE=$(psql ${PSQL_OPTS} -tc "SELECT datname FROM pg_database;" | sed -e '/^$/d' -e 's/^ *//')
+    DATABASES=$(psql ${PSQL_OPTS} -tc "SELECT datname FROM pg_database;" | sed -e '/^$/d' -e 's/^ *//')
 else
-    DATABASE=$(psql ${PSQL_OPTS} -tc "SELECT datname FROM pg_database;" | sed -e '/^$/d' -e 's/^ *//' | grep -vE "(${IGNORE_DB})")
+    DATABASES=$(psql ${PSQL_OPTS} -tc "SELECT datname FROM pg_database;" | sed -e '/^$/d' -e 's/^ *//' | grep -vE "(${IGNORE_DB})")
 fi
 
 # Export databases into separate files
