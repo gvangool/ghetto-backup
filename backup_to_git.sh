@@ -4,7 +4,7 @@ set -e
 # Set the backup location
 BACKUP_DIR=${BACKUP_DIR:="/tmp/git_backup/"}
 
-if [[ $(which mysql_dump &> /dev/null) ]] ; then
+if [[ $(which mysqldump &> /dev/null) ]] ; then
     # Make MySQL backup
     BACKUP_DIR=$BACKUP_DIR ./mysql.sh
 fi
