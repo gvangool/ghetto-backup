@@ -4,11 +4,11 @@ set -e
 # Set the backup location
 BACKUP_DIR=${BACKUP_DIR:="/tmp/git_backup/"}
 
-if [[ $(which mysqldump &> /dev/null) ]] ; then
+if [[ ! -z $(which mysqldump) ]] ; then
     # Make MySQL backup
     BACKUP_DIR=$BACKUP_DIR ./mysql.sh
 fi
-if [[ $(which pg_dump &> /dev/null) ]] ; then
+if [[ ! -z $(which pg_dump) ]] ; then
     # Make PostgreSQL backup
     BACKUP_DIR=$BACKUP_DIR ./postgres.sh
 fi
