@@ -97,13 +97,13 @@ Usage::
 
 Backup to git
 -------------
-This ties it all together. It will create a backup of the MySQl databases copy
-all the paths to the ``$BACKUP_DIR``, commit it to git and push those to the
-remote repository.
+This ties it all together. It will create a backup of the MySQL & PostgreSQL
+databases, copy all the paths to the ``$BACKUP_DIR``, commit it to git and
+push those to the remote repository.
 
 Usage::
 
-  BACKUP_DIR="~/backups/" sudo ./backup_to_git.sh ~/project/my_website/uploads ~/project/web2/media/
+  BACKUP_DIR="~/backups/" ./backup_to_git.sh ~/project/my_website/uploads ~/project/web2/media/
 
 Usage
 -----
