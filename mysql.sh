@@ -23,5 +23,9 @@ DATABASES=$(mysql ${MYSQL_OPTS} -e "SHOW DATABASES;" | sed -n 2~1p | grep -vE "(
 
 # Export databases into separate files
 for DB in $DATABASES ; do
-    GZIP=${GZIP} mysqldump ${MYSQL_OPTS} ${MYSQLDUMP_OPTS} ${DB} | gzip > ${BACKUP_DIR}${DB}.sql.gz
+    if [[ -n "$GZIP" && "$GZIP" != "0" ]] ; then
+        GZIP=${GZIP} mysqldump ${MYSQL_OPTS} ${MYSQLDUMP_OPTS} ${DB} | gzip > ${BACKUP_DIR}${DB}.sql.gz
+    else
+        mysqldump ${MYSQL_OPTS} ${MYSQLDUMP_OPTS} ${DB} > ${BACKUP_DIR}${DB}.sql
+    fi
 done

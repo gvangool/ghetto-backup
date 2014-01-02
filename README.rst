@@ -20,6 +20,8 @@ This will create a gzip-ed dump of each MySQL database.
 Basic usage::
 
   MYSQL_OPTS="-u root" ./mysql.sh
+  # Don't zip the results
+  GZIP="0" MYSQL_OPTS="-u root" ./mysql.sh
 
 Advanced usage::
 
@@ -42,7 +44,8 @@ Options
 ``GZIP``
   ``gzip`` uses the GZIP environment variable by default to specify default
   options. We hijack this behaviour, so you can easily specify extra
-  abilities.
+  abilities. If you don't want the gzip the result, set it to ``0`` (so
+  ``GZIP="0"``).
 
   Default: ``-9 --rsyncable``
 
@@ -75,7 +78,8 @@ Options
 ``GZIP``
   ``gzip`` uses the GZIP environment variable by default to specify default
   options. We hijack this behaviour, so you can easily specify extra
-  abilities.
+  abilities. If you don't want the gzip the result, set it to ``0`` (so
+  ``GZIP="0"``).
 
   Default: ``-9 --rsyncable``
 

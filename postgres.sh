@@ -24,5 +24,9 @@ fi
 
 # Export databases into separate files
 for DB in $DATABASES ; do
-    GZIP=${GZIP} pg_dump ${PSQL_OPTS} ${PGDUMP_OPTS} ${DB} | gzip > ${BACKUP_DIR}${DB}.pgsql.gz
+    if [[ -n "$GZIP" && "$GZIP" != "0" ]] ; then
+        GZIP=${GZIP} pg_dump ${PSQL_OPTS} ${PGDUMP_OPTS} ${DB} | gzip > ${BACKUP_DIR}${DB}.pgsql.gz
+    else
+        pg_dump ${PSQL_OPTS} ${PGDUMP_OPTS} ${DB} > ${BACKUP_DIR}${DB}.pgsql
+    fi
 done
