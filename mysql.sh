@@ -1,7 +1,10 @@
 #!/bin/bash
 set -e
 
-BACKUP_DIR=${BACKUP_DIR:="/tmp/backup"}
+# Set the backup location
+BACKUP_DIR=${BACKUP_DIR:="/tmp/backup/"}
+# Make sure that it ends with a / and only 1 /
+BACKUP_DIR=${BACKUP_DIR%/}/
 
 # Make sure that the $MYSQL_OPTS var is available. This is the connection
 # string for mysql (e.g. MYSQL_OPTS="-u $USERNAME -p$PASSWORD -P $PORT -h

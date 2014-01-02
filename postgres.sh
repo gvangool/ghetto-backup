@@ -1,7 +1,10 @@
 #!/bin/bash
 set -e
 
-BACKUP_DIR=${BACKUP_DIR:="/tmp/backup"}
+# Set the backup location
+BACKUP_DIR=${BACKUP_DIR:="/tmp/backup/"}
+# Make sure that it ends with a / and only 1 /
+BACKUP_DIR=${BACKUP_DIR%/}/
 
 # Make sure that the $PSQL_OPTS var is available. This is the connection
 # string for PostgreSQL (e.g. PSQL_OPTS="-U $USERNAME" ./postgres.sh). By
