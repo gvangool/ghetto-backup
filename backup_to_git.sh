@@ -13,7 +13,9 @@ if [[ ! -z $(which pg_dump) ]] ; then
     BACKUP_DIR=$BACKUP_DIR ./postgres.sh
 fi
 # Make file backup
-BACKUP_DIR=$BACKUP_DIR ./copy_files.sh $@
+if [[ $# -gt 0 ]] ; then
+    BACKUP_DIR=$BACKUP_DIR ./copy_files.sh $@
+fi
 
 pushd ${BACKUP_DIR} > /dev/null
 GIT="git"
